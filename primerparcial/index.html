@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Spooky</title>
+</head>
+<body>
+    <nav class="navbar fixed-top nav-settings">
+    
+        <div id="div-logo">
+            <img id="logo"src="./imgs/titulo.jpeg" class="img-fluid">
+        </div>   
+        
+        <ul id="lista-nav">
+            <li><a href="#" id="btn-inicio">Inicio</a></li>
+            <li><a href="#" id="btn-monstruos">Monstruos</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="cards-monstruos" class="cards-section oculto">
+
+    </section>
+
+    <section id="crud">
+            <form id="form-crud" onsubmit="postMonstruo(event)">
+                <h1 id="titulo-crud">
+                    Informacion del monstruo
+                </h1>
+                <i class="fa-regular fa-user blanco sangria-iconos"></i>
+                <label for="nombre-txt">Nombre:</label>
+                <div id="divNombre" class="sangria"> 
+                    <input type="text" id="nombre-txt" name="nombre" required>
+                </div>
+                <i class="fa-solid fa-masks-theater blanco sangria-iconos"></i>
+                <label for="alias-txt">Alias:</label>
+                <div id="divAlias" class="sangria">         
+                    <input type="text" id="alias-txt" name="alias" required>
+                </div>
+                <i class="fa-solid fa-shield sangria-iconos blanco"></i>
+                <label for="divDefensa">Defensa:</label>
+                <div id="divDefensa" class="sangria">
+                    <input type="radio" name="rad-defensa" id="rad-estaca" required>
+                    <label for="radEstaca">Estaca</label>
+                    <input type="radio" name="rad-defensa" id="rad-plata" required>
+                    <label for="radPlata">Plata</label>
+                    <input type="radio" name="rad-defensa" id="rad-crucifijo" required>
+                    <label for="radCrucifijo">Crucifijo</label>
+                    <input type="radio" name="rad-defensa" id="rad-pocion" required>
+                    <label for="radPocion">Pocion</label>
+                </div>
+                <i class="fa-solid fa-face-sad-cry sangria-iconos blanco"></i>
+                <label for="rng-miedo">Miedo:</label>
+                <div id="divMiedo" class="sangria">             
+                    <input type="range" name="miedo" id="rng-miedo" required>
+                </div>
+                <i class="fa-solid fa-spider sangria-iconos blanco"></i>
+                <label for="select-tipo">Tipo:</label>
+                <div id="divTipo" class="sangria">
+                    <select name="tipo" id="select-tipo" required></select>
+                </div>
+               
+                <button id="btnGuardar" type="submit">
+                    <i class="fa-regular fa-floppy-disk"></i>Guardar
+                </button>
+
+                <button id="btnCancelar" type="reset" class="oculto">
+                    <i class="fa-regular fa-floppy-disk"></i>Cancelar
+                </button>
+        
+            </form>
+
+            <img src="./imgs/spinner.jpeg" alt="Spinner" id="spinner" class="oculto rotar-spinner">
+
+    </section>
+
+    <div id="opciones-tabla" class="div-opciones d-flex justify-content-center align-items-center">     
+                  
+            <label for="select-tipos-tabla" class="mt-3">Tipos</label>
+            <select name="tipos" id="select-tipos-tabla" class="ml-4 form-select bg-warning text-danger"></select>
+             
+            <label for="txt-promedio-miedo" class="mt-3">Promedio de miedo</label>
+            <input id="txt-promedio-miedo" type="text" value="Texto de solo lectura" class="promedio-miedo" readonly>
+
+            <label for="txt-miedo-maximo" class="mt-3">Miedo Maximo</label>
+            <input id="txt-miedo-maximo" type="text" value="Texto de solo lectura" class="promedio-miedo" readonly>
+
+            <label for="txt-miedo-minimo" class="mt-3">Miedo Minimo</label>
+            <input id="txt-miedo-minimo" type="text" value="Texto de solo lectura" class="promedio-miedo" readonly>
+        </div>
+
+
+    <div id="div-columnas-tabla">
+        <div>
+            <input type="checkbox" name="chkbox-columna-nombre" id="chkbox-nombre" class="chkbox" checked>
+            <label for="rdBtn-nombre">Nombre</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="chkbox-columna-alias" id="chkbox-alias" class="chkbox" checked>
+            <label for="rdBtn-nombre">Alias</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="chkbox-columna-defensa" id="chkbox-defensa" class="chkbox" checked>
+            <label for="rdBtn-nombre">Defensa</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="chkbox-columna-miedo" id="chkbox-miedo" class="chkbox" checked>
+            <label for="rdBtn-nombre">Miedo</label>
+        </div>
+       
+        <div>
+            <input type="checkbox" name="chkbox-columna-tipo" id="chkbox-tipo" class="chkbox" checked>
+            <label for="rdBtn-nombre">Tipo</label>
+        </div>
+    </div>
+
+    <div id="tabla" class="table tabla-scroll">
+
+    </div>
+   
+    
+    <footer id="footer">
+        <ul id="lista-footer">
+            <li><a href="#crud">Inicio</a></li>
+            <li><a href="#">Monstruos</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+
+        <p id="titulo-footer">Laboratorio III - Todos los derechos reservados 2023</p>
+
+    </footer>
+  
+    
+    <script src="./codigo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

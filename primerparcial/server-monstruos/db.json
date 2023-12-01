@@ -1,0 +1,36 @@
+{
+  "monstruos": [
+    {
+      "id": 1,
+      "nombre": "Eduardo",
+      "tipo": "Esqueleto",
+      "miedo": "25",
+      "alias": "El maquinas",
+      "defensa": "Crucifijo"
+    },
+    {
+      "id": 2,
+      "nombre": "Dracula",
+      "tipo": "Vampiro",
+      "miedo": "81",
+      "alias": "El conde",
+      "defensa": "Estaca"
+    },
+    {
+      "id": 3,
+      "nombre": "Leandro",
+      "tipo": "Hombre Lobo",
+      "miedo": "0",
+      "alias": "EL matador",
+      "defensa": "Plata"
+    },
+    {
+      "id": 4,
+      "nombre": "Valentin",
+      "tipo": "Hombre Lobo",
+      "miedo": "85",
+      "alias": "El negro",
+      "defensa": "Plata"
+    }
+  ]
+}
